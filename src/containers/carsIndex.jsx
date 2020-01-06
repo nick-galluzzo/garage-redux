@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import { fetchCars } from '../actions/index';
 
@@ -24,8 +25,13 @@ class CarsIndex extends React.Component {
 
   render() {
     return (
-      <div>
-        { this.renderCars() }
+      <div className="container">
+        <div>
+          { this.renderCars() }
+        </div>
+        <div>
+          <Link to={'/cars/new'}>Add a New Car</Link>
+        </div>
       </div>
     );
   }
