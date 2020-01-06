@@ -5,7 +5,7 @@ import { bindActionCreators } from 'redux';
 import { fetchCars } from '../actions/index';
 
 class CarsIndex extends React.Component {
-  componentDidMount() {
+  componentWillMount() {
     this.props.fetchCars(this.props.garage);
   }
 
@@ -13,11 +13,12 @@ class CarsIndex extends React.Component {
     const { cars } = this.props;
     return cars.map((car) => {
       return (
-        <div key={car.id}>
-          <h1>{car.brand} {car.model}</h1>
-          <p>Owner: {car.owner}</p>
-          <p>Plate: {car.plate}</p>
-        </div>
+        <li key={car.id}>
+          <Link to={`/cars/${car.id}`}>
+            <h1>{car.brand} {car.model}</h1>
+            <p>Owner: {car.owner}</p>
+          </Link>
+        </li>
       );
     }
     );
