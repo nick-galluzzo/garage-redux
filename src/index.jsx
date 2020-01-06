@@ -6,15 +6,19 @@ import { createHistory as history } from 'history';
 
 import store from './components/store';
 import CarsIndex from './containers/carsIndex';
+import CarsNew from './containers/carsNew';
 
 import '../assets/stylesheets/application.scss';
 
 ReactDOM.render(
   <Provider store={store}>
     <Router history={history}>
-      <Switch>
-        <CarsIndex />
-      </Switch>
+      <div className="view-container">
+        <Switch>
+          <Route path="/" exact component={CarsIndex} />
+          <Route path="/cars/new" exact component={CarsNew} />
+        </Switch>
+      </div>
     </Router>
   </Provider>,
   document.getElementById('root')
