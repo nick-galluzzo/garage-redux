@@ -44,8 +44,8 @@ export const fetchCar = (id) => {
 export const removeCar = (car, callback) => {
   const url = `https://wagon-garage-api.herokuapp.com/cars/${car.id}`;
   fetch(url, { method: 'DELETE' })
-   .then(response => response.json())
-   .then(callback);
+    .then(response => response.json())
+    .then(callback);
 
   return {
     type: REMOVE_CAR,
