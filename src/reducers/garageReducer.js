@@ -1,7 +1,7 @@
-const garageName = prompt("What is your garage?") || `garage${Math.floor(10 + (Math.random() * 90))}`;
+export const garageName = prompt("What is your garage?") || `garage${Math.floor(10 + (Math.random() * 90))}`;
 
-const garageReducer = (state = garageName, action) => {
-  if (state === null) {
+function garageReducer(state = garageName, action) {
+  if (state === undefined) {
     return [];
   }
 
@@ -9,6 +9,6 @@ const garageReducer = (state = garageName, action) => {
     default:
       return state;
   }
-};
+}
 
 export default garageReducer;
