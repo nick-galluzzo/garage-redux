@@ -2,6 +2,7 @@
 export const FETCH_CARS = "FETCH_CARS";
 export const FETCH_CAR = "FETCH_CAR";
 export const ADD_CAR = "ADD_CAR";
+export const REMOVE_CAR = "REMOVE_CAR";
 
 export const fetchCars = (garage) => {
   const url = `https://wagon-garage-api.herokuapp.com/${garage}/cars`;
@@ -37,5 +38,17 @@ export const fetchCar = (id) => {
   return {
     type: FETCH_CAR,
     payload: promise
+  };
+};
+
+export const removeCar = (car, callback) => {
+  const url = `https://wagon-garage-api.herokuapp.com/cars/${car.id}`;
+  fetch(url, { method: 'DELETE' })
+   .then(response => response.json())
+   .then(callback);
+
+  return {
+    type: REMOVE_CAR,
+    payload: car
   };
 };
