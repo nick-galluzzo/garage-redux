@@ -5,7 +5,6 @@ const carsReducer = (state = [], action) => {
   if (state === null) {
     return [];
   }
-
   switch (action.type) {
     case FETCH_CARS: {
       return action.payload;
