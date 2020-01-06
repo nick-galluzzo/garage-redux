@@ -5,6 +5,7 @@ import { reduxForm, Field } from 'redux-form';
 import { addCar } from '../actions/index';
 import Aside from '../components/aside';
 
+const required = value => value ? undefined : 'Required';
 
 class CarsNew extends React.Component {
   onSubmit = (values) => {
@@ -12,7 +13,6 @@ class CarsNew extends React.Component {
       this.props.history.push('/');
     });
   }
-
 
   render() {
     return (
@@ -32,6 +32,7 @@ class CarsNew extends React.Component {
                   placeholder="Mercedes"
                   component="input"
                   className="form-control"
+                  validate={required}
                 />
               </div>
               <div className="form-group">
@@ -43,6 +44,7 @@ class CarsNew extends React.Component {
                   placeholder="C-Class"
                   component="input"
                   className="form-control"
+                  validate={required}
                 />
               </div>
               <div className="form-group">
@@ -54,6 +56,7 @@ class CarsNew extends React.Component {
                   placeholder="Billy-Bob"
                   component="input"
                   className="form-control"
+                  validate={required}
                 />
               </div>
               <div className="form-group">
@@ -65,6 +68,7 @@ class CarsNew extends React.Component {
                   placeholder="XXXXXXX"
                   component="input"
                   className="form-control"
+                  validate={required}
                 />
               </div>
               <button
