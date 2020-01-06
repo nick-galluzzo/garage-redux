@@ -1,5 +1,6 @@
 // TODO: add and export your own actions
 export const FETCH_CARS = "FETCH_CARS";
+export const FETCH_CAR = "FETCH_CAR";
 export const ADD_CAR = "ADD_CAR";
 
 export const fetchCars = (garage) => {
@@ -25,5 +26,16 @@ export const addCar = (garage, car, callback) => {
   return {
     type: ADD_CAR,
     payload: request
+  };
+};
+
+export const fetchCar = (id) => {
+  const url = `https://wagon-garage-api.herokuapp.com/cars/${id}`;
+  const promise = fetch(url)
+    .then(response => response.json());
+
+  return {
+    type: FETCH_CAR,
+    payload: promise
   };
 };
