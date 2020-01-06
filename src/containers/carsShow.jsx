@@ -2,13 +2,17 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import { fetchCar } from '../actions/index';
+import { fetchCar, removeCar } from '../actions/index';
 
 class CarsShow extends React.Component {
   componentWillMount() {
     if (!this.props.car) {
       this.props.fetchCar(this.props.match.params.id);
     }
+  }
+
+  handeClick = () => {
+    this.props.removeCar(this.props.car, () => { this.props.history.push('/'); });
   }
 
   renderCar() {
@@ -26,6 +30,7 @@ class CarsShow extends React.Component {
     return (
       <div>
         {this.renderCar()};
+        <button className="btn btn-danger" onClick={() => this.handeClick()}>REMOVE CAR</button>
       </div>
     );
   }
@@ -38,7 +43,7 @@ function mapStateToProps(state, ownProps) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ fetchCar }, dispatch);
+  return bindActionCreators({ fetchCar, removeCar }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(CarsShow);
